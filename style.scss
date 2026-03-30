@@ -800,6 +800,10 @@ em {
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+
+  @media screen and (max-width: 768px) {
+    background-attachment: scroll; // 固定を解除！
+  }
 }
 
 .hero__photo-overlay {
@@ -1326,6 +1330,30 @@ em {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 8px;
+
+    // overflow-x: scroll;
+    /* autoじゃなくて「scroll」にすると、枠が常に確保されるで */
+
+    /* Google Chrome や Safari（iPhone）向けの特別な設定 */
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      height: 8px;
+      /* 横スクロールバーの高さ */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 182, 193, 0.8);
+      /* 白兎らしいピンク色にしてみる？ */
+      border-radius: 10px;
+      border: 2px solid #fff;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      /* バーの通り道の背景色 */
+      border-radius: 10px;
+    }
+
   }
 
   &__svg {
@@ -1453,9 +1481,65 @@ em {
   }
 }
 
+.access {
+  .section-title {
+    @media screen and (max-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+// .hours-table-wrap {
+//   overflow-x: auto;
+//   -webkit-overflow-scrolling: touch;
+//   min-width: 500px;
+//   transform-origin: center center;
+//   margin-left: calc(-50vw + 50%);
+//   /* 上端を基準に縮小 */
+//   transform: scale(0.75);
+// }
+
+// .hours-table-wrap {
+//   /* 1. 元のサイズを「スマホで見せたい幅」に固定する */
+//   width: 500px;
+//   /* 2. 縮小の基準を中心にする */
+//   transform-origin: center top;
+//   /* 3. 0.75倍に縮小（500px * 0.75 = 375px で、ちょうどiPhoneの幅になる！） */
+//   transform: scale(0.75);
+//   /* 4. 【重要】縮小して左右にできた「見えない空白」を詰めて、中央に寄せる */
+//   position: relative;
+//   left: 50%;
+//   margin-left: -250px;
+//   /* 元の幅の半分を戻して中央へ */
+//   /* 5. 縮小すると上下に隙間ができるから、それを詰める（必要に応じて調整してな） */
+//   // margin-top: -20px;
+//   margin-bottom: -100px;
+//   /* 中のテーブルは100%でOK */
+//   table {
+//     width: 100%;
+//     white-space: nowrap;
+//   }
+// }
+
 .hours-table-wrap {
+  /* --- ここはPC・共通の設定 --- */
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+
+  /* --- ここからスマホ（画面幅768px以下）の時だけ --- */
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    transform-origin: center top;
+    transform: scale(0.75);
+
+    /* 中央に寄せるための調整 */
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+
+    /* 縮小して浮いた下の余白を詰める（数字は様子見て調整してな） */
+    margin-bottom: -100px;
+  }
 }
 
 .hours-table {
@@ -1513,8 +1597,24 @@ em {
 }
 
 .access__map-wrap {
-  overflow: hidden;
+  // overflow: hidden;
   padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    transform-origin: center top;
+    transform: scale(0.75);
+
+    /* 中央に寄せるための調整 */
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+
+    /* 縮小して浮いた下の余白を詰める（数字は様子見て調整してな） */
+    margin-bottom: -100px;
+  }
 }
 
 // ── FOOTER ───────────────────────────────────────────────────
