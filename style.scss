@@ -1327,11 +1327,11 @@ em {
   }
 
   &__svg-scroll {
-    overflow-x: auto;
+    // overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 8px;
 
-    // overflow-x: scroll;
+    overflow-x: scroll;
     /* autoじゃなくて「scroll」にすると、枠が常に確保されるで */
 
     /* Google Chrome や Safari（iPhone）向けの特別な設定 */
